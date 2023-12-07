@@ -43,12 +43,10 @@ class ProductAdapter(
             textViewProductName.text = product.name
             textViewProductPrice.text = "${product.price}"
 
-            // Set click listener for the entire item view
             itemView.setOnClickListener {
                 listener.onItemClick(product)
             }
 
-            // Set click listener for the "Add to Cart" button
             buttonAddToCart.setOnClickListener {
                 listener.onAddToCartClick(product)
             }

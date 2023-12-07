@@ -2,6 +2,7 @@ package com.example.myapplication
 
 import android.app.DatePickerDialog
 import android.app.TimePickerDialog
+import android.content.Intent
 import android.icu.text.SimpleDateFormat
 import android.icu.util.Calendar
 import androidx.appcompat.app.AppCompatActivity
@@ -17,30 +18,24 @@ class BookActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_book)
 
-        // Инициализация кнопки
         bookButton = findViewById(R.id.bookButton)
 
-        // Установка обработчика нажатия на кнопку
         bookButton.setOnClickListener {
-            // Открываем диалог выбора даты и времени
             showDateTimePickerDialog()
         }
     }
 
     private fun showDateTimePickerDialog() {
-        // Используем Calendar для установки начальной даты и времени
+
         val calendar = Calendar.getInstance()
 
-        // Создаем DatePickerDialog
         val datePickerDialog = DatePickerDialog(
             this,
             { _, year, monthOfYear, dayOfMonth ->
-                // Устанавливаем выбранную дату в Calendar
                 calendar.set(Calendar.YEAR, year)
                 calendar.set(Calendar.MONTH, monthOfYear)
                 calendar.set(Calendar.DAY_OF_MONTH, dayOfMonth)
 
-                // После выбора даты открываем TimePickerDialog
                 showTimePickerDialog(calendar)
             },
             calendar.get(Calendar.YEAR),
@@ -48,32 +43,30 @@ class BookActivity : AppCompatActivity() {
             calendar.get(Calendar.DAY_OF_MONTH)
         )
 
-        // Показываем DatePickerDialog
         datePickerDialog.show()
     }
 
     private fun showTimePickerDialog(calendar: Calendar) {
-        // Создаем TimePickerDialog
+
         val timePickerDialog = TimePickerDialog(
             this,
             { _, hourOfDay, minute ->
-                // Устанавливаем выбранное время в Calendar
                 calendar.set(Calendar.HOUR_OF_DAY, hourOfDay)
                 calendar.set(Calendar.MINUTE, minute)
 
-                // Форматируем дату и время
                 val dateFormat = SimpleDateFormat("dd.MM.yyyy HH:mm", Locale.getDefault())
                 val selectedDateTime = dateFormat.format(calendar.time)
 
-                // Действия с выбранной датой и временем (например, отображение в Toast)
-                Toast.makeText(this, "Выбрано: $selectedDateTime", Toast.LENGTH_SHORT).show()
+                Toast.makeText(this, "Вы успешно зарбронировали данный товар на: $selectedDateTime", Toast.LENGTH_SHORT).show()
+
+                startActivity(Intent(this, HomeActivity::class.java))
+                finish()
             },
             calendar.get(Calendar.HOUR_OF_DAY),
             calendar.get(Calendar.MINUTE),
             true
         )
 
-        // Показываем TimePickerDialog
         timePickerDialog.show()
     }
 }
