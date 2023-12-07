@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageViewProduct"
+        android:layout_width="match_parent"
+        android:layout_height="120dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/dress" />
+
+    <TextView
+        android:id="@+id/textViewProductName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Свадебное платье"
+        android:fontFamily="@font/doloman"
+        android:textSize="28dp" />
+
+    <TextView
+        android:id="@+id/textViewProductPrice"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:fontFamily="@font/doloman"
+        android:text="20 000"
+        android:textSize="20dp" />
+
+    <!-- Добавлено свойство android:gravity для центрирования кнопки -->
+    <Button
+        android:id="@+id/buttonAddToCart"
+        android:layout_width="140dp"
+        android:layout_height="40dp"
+        android:fontFamily="@font/doloman"
+        android:textSize="20dp"
+        android:textColor="#000"
+        android:background="@drawable/rounded_button"
+        android:layout_marginTop="10dp"
+        android:textAllCaps="false"
+        android:text="Забронировать" />
+</LinearLayout>
